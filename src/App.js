@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import logo from './components/logo.svg';
 import './App.css';
-import moment from "moment";
 import {Login} from "./components/Login";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import {TodoApp} from './components/TodoApp'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
+
 
 const LoginView = () => (
     <Login/>
@@ -37,16 +34,20 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">TODO React App</h1>
                 </header>
-                
                 <ul>
                     {localStorage.getItem('IsLoggedIn')==="true" ? 
-                        <li>
-                            <Link to="/todo">Todo</Link> <Route path="/todo" component={TodoAppView}/>
-                        </li>
+                        <div>
+
+                        <Link to="/todo">Click here to make a TODO</Link>
+                        <Route exact path="/todo" component={TodoAppView}/>
+                        </div>
                         : 
-                        <li>
-                            <Link to="/">Login</Link> <Route exact path="/" component={LoginView}/>
-                        </li>
+                        /*<li>
+
+                        </li>*/
+                      
+                            <Route exact path="/" component={LoginView}/>
+                     
                     } 
                 </ul> </div>
 
