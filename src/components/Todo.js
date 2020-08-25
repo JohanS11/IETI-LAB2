@@ -1,4 +1,5 @@
 import React from 'react';
+import {SimpleCard} from "./SimpleCard";
 
 export class Todo extends React.Component {
 
@@ -8,11 +9,11 @@ export class Todo extends React.Component {
 
     render() {
         return (
-            <tr>
-                <td>{this.props.text}</td>
-                <td>{this.props.priority}</td>
-                <td>{this.props.dueDate.toString()}</td>
-            </tr>
+            <SimpleCard
+                tareaN = {this.props.text } 
+                priority = {this.props.priority} 
+                date = {this.props.dueDate.toString()} >
+            </SimpleCard>
         );
     }
 

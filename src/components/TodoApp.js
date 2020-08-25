@@ -14,7 +14,7 @@ import {
     KeyboardDatePicker
   } from '@material-ui/pickers'
 
-class TodoApp extends Component {
+export class TodoApp extends Component {
 
     constructor(props) {
         super(props);
@@ -30,10 +30,6 @@ class TodoApp extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">TODO React App</h1>
-                </header>
 
                 <br/>
                 <br/>
@@ -71,7 +67,7 @@ class TodoApp extends Component {
                             format="MM/dd/yyyy"
                             margin="normal"
                             id="due-date"
-                            label="Task Date"
+                            label="Todo Date"
                             value={this.state.dueDate}
                             onChange={this.handleDateChange}
                             KeyboardButtonProps={{
@@ -89,7 +85,7 @@ class TodoApp extends Component {
                 <br/>
                 <br/>
                 <TodoList todoList={this.state.items}/>
-                <Login>  </Login>
+
             </div>
         );
     }
@@ -135,4 +131,3 @@ class TodoApp extends Component {
 
 }
 
-export default TodoApp;
