@@ -6,12 +6,6 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import {TodoApp} from './components/TodoApp'
 
 
-const LoginView = () => (
-    <Login/>
-);
-const TodoAppView = () => (
-    <TodoApp/>
-);
 
 
 class App extends Component {
@@ -22,7 +16,15 @@ class App extends Component {
         localStorage.setItem("password","chan123");
     }
 
+    LoginView = () => (
+        <Login/>
+    );
+    TodoAppView = () => (
+        <TodoApp/>
+    );
+
     
+
 
     render() {
 
@@ -39,14 +41,10 @@ class App extends Component {
                         <div>
 
                         <Link to="/todo">Click here to make a TODO</Link>
-                        <Route exact path="/todo" component={TodoAppView}/>
+                        <Route exact path="/todo" component={this.TodoAppView}/>
                         </div>
                         : 
-                        /*<li>
-
-                        </li>*/
-                      
-                            <Route exact path="/" component={LoginView}/>
+                        <Route exact path="/" component={this.LoginView}/>
                      
                     } 
                 </ul> </div>
