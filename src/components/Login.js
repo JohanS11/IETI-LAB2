@@ -17,32 +17,28 @@ export class Login extends React.Component{
     constructor(props) {
         super(props);
         this.state = {email:"", password:""};
-        this.handleSubmitEmail = this.handleSubmitEmail.bind(this)
-        this.handleSubmitPasswd = this.handleSubmitPasswd.bind(this);
+        this.handleChangeEmail = this.handleChangeEmail.bind(this)
+        this.handleChangePasswd = this.handleChangePasswd.bind(this);
         this.handleSend = this.handleSend.bind(this);
     }
 
-    handleSubmitEmail(e) {
+    handleChangeEmail(e) {
         this.setState({
             email : e.target.value
         });
     }
 
-    handleSubmitPasswd(e) {
+    handleChangePasswd(e) {
         this.setState({
             password : e.target.value
         })
     }
 
     handleSend() {
-        localStorage.setItem("isLoggedIn",true)
-        this.setState(this.state)
+        if(localStorage.getItem('email')===this.state.email  && localStorage.getItem('password')===this.state.password ){
+            localStorage.setItem('IsLoggedIn', "true");
+        }
        
-    }
-
-    loggedIn(){
-        localStorage.setItem("isLoggedIn",true)
-        this.setState(this.state)
     }
 
     render(){
@@ -65,27 +61,26 @@ export class Login extends React.Component{
                                 id="email" 
                                 name="email" 
                                 autoComplete="email" 
-                                onChange={(e) => this.handleSubmitEmail(e)}
-                                value = {this.state.password}
+                                onChange={this.handleChangeEmail}
                                 autoFocus />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="password">Password</InputLabel>
                                 <Input
                                     name="password"
-                                    type="password"
-                                    onChange={(e) => this.handleSubmitPasswd(e)}
                                     id="password"
+                                    type="password"
+                                    onChange={this.handleChangePasswd}
                                     autoComplete="current-password"
-                                    value={this.state.email}
                                 />
                             </FormControl>
-                            <Button onClick={()=>this.handleSend()}
+                            <Button onClick={this.handleSend}
                                 type="submit"
                                 fullWidth
-                                variant="contained"
+                                variant="raised"
                                 color="primary"
                                 className="submit"
+                            
                             >
                                 Sign in
                             </Button>
